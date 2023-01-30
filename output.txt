@@ -1,0 +1,318 @@
+Number of files in C:/Users/dongv/Documents/GitHub/ReadfileTraining: 17
+
+.ipynb_checkpoints is not a csv file
+
+File: Content (1).csv
+Headers: ['', 'Content ID', 'User ID', 'Type', 'Category', 'URL']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file Content (1).csv is 1000
+Number of fields in file Content (1).csv is 5
+
+Number of values in Content ID column is 1000
+Number of unique values in Content ID column is 1000
+Number of null values in Content ID column is 0
+
+Number of values in User ID column is 1000
+Number of unique values in User ID column is 446
+Number of null values in User ID column is 0
+
+Number of values in Type column is 1000
+Number of unique values in Type column is 4
+Number of null values in Type column is 0
+
+Number of values in Category column is 1000
+Number of unique values in Category column is 41
+Number of null values in Category column is 0
+
+Number of values in URL column is 801
+Number of unique values in URL column is 802
+Number of null values in URL column is 199
+
+customer.txt.txt is not a csv file
+
+Filedelimited is not a csv file
+
+Fileread.ipynb is not a csv file
+
+KPMG_VI_New_raw_data_update_final1.xlsx is not a csv file
+
+File: Location (1).csv
+Headers: ['', 'User ID', 'Address']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file Location (1).csv is 500
+Number of fields in file Location (1).csv is 2
+
+Number of values in User ID column is 500
+Number of unique values in User ID column is 500
+Number of null values in User ID column is 0
+
+Number of values in Address column is 500
+Number of unique values in Address column is 500
+Number of null values in Address column is 0
+
+output.txt is not a csv file
+
+File: potato.csv
+Headers: ['DATE', 'STORE_NBR', 'LYLTY_CARD_NBR', 'TXN_ID', 'PROD_NBR', 'PROD_NAME', 'PROD_QTY', 'TOT_SALES']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file potato.csv is 264836
+Number of fields in file potato.csv is 8
+
+Number of values in DATE column is 264836
+Number of unique values in DATE column is 364
+Number of null values in DATE column is 0
+
+Number of values in STORE_NBR column is 264836
+Number of unique values in STORE_NBR column is 272
+Number of null values in STORE_NBR column is 0
+
+Number of values in LYLTY_CARD_NBR column is 264836
+Number of unique values in LYLTY_CARD_NBR column is 72637
+Number of null values in LYLTY_CARD_NBR column is 0
+
+Number of values in TXN_ID column is 264836
+Number of unique values in TXN_ID column is 263127
+Number of null values in TXN_ID column is 0
+
+Number of values in PROD_NBR column is 264836
+Number of unique values in PROD_NBR column is 114
+Number of null values in PROD_NBR column is 0
+
+Number of values in PROD_NAME column is 264836
+Number of unique values in PROD_NAME column is 114
+Number of null values in PROD_NAME column is 0
+
+Number of values in PROD_QTY column is 264836
+Number of unique values in PROD_QTY column is 6
+Number of null values in PROD_QTY column is 0
+
+Number of values in TOT_SALES column is 264836
+Number of unique values in TOT_SALES column is 112
+Number of null values in TOT_SALES column is 0
+
+File: Profile (1).csv
+Headers: ['', 'User ID', 'Interests', 'Age']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file Profile (1).csv is 500
+Number of fields in file Profile (1).csv is 3
+
+Number of values in User ID column is 500
+Number of unique values in User ID column is 500
+Number of null values in User ID column is 0
+
+Number of values in Interests column is 500
+Number of unique values in Interests column is 366
+Number of null values in Interests column is 0
+
+Number of values in Age column is 500
+Number of unique values in Age column is 45
+Number of null values in Age column is 0
+
+File: QVI_data.csv
+Headers: ['LYLTY_CARD_NBR', 'DATE', 'STORE_NBR', 'TXN_ID', 'PROD_NBR', 'PROD_NAME', 'PROD_QTY', 'TOT_SALES', 'PACK_SIZE', 'BRAND', 'LIFESTAGE', 'PREMIUM_CUSTOMER']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file QVI_data.csv is 264834
+Number of fields in file QVI_data.csv is 12
+
+Number of values in LYLTY_CARD_NBR column is 264834
+Number of unique values in LYLTY_CARD_NBR column is 72636
+Number of null values in LYLTY_CARD_NBR column is 0
+
+Number of values in DATE column is 264834
+Number of unique values in DATE column is 364
+Number of null values in DATE column is 0
+
+Number of values in STORE_NBR column is 264834
+Number of unique values in STORE_NBR column is 272
+Number of null values in STORE_NBR column is 0
+
+Number of values in TXN_ID column is 264834
+Number of unique values in TXN_ID column is 263125
+Number of null values in TXN_ID column is 0
+
+Number of values in PROD_NBR column is 264834
+Number of unique values in PROD_NBR column is 114
+Number of null values in PROD_NBR column is 0
+
+Number of values in PROD_NAME column is 264834
+Number of unique values in PROD_NAME column is 114
+Number of null values in PROD_NAME column is 0
+
+Number of values in PROD_QTY column is 264834
+Number of unique values in PROD_QTY column is 5
+Number of null values in PROD_QTY column is 0
+
+Number of values in TOT_SALES column is 264834
+Number of unique values in TOT_SALES column is 111
+Number of null values in TOT_SALES column is 0
+
+Number of values in PACK_SIZE column is 264834
+Number of unique values in PACK_SIZE column is 21
+Number of null values in PACK_SIZE column is 0
+
+Number of values in BRAND column is 264834
+Number of unique values in BRAND column is 21
+Number of null values in BRAND column is 0
+
+Number of values in LIFESTAGE column is 264834
+Number of unique values in LIFESTAGE column is 7
+Number of null values in LIFESTAGE column is 0
+
+Number of values in PREMIUM_CUSTOMER column is 264834
+Number of unique values in PREMIUM_CUSTOMER column is 3
+Number of null values in PREMIUM_CUSTOMER column is 0
+
+File: QVI_purchase_behaviour.csv
+Headers: ['LYLTY_CARD_NBR', 'LIFESTAGE', 'PREMIUM_CUSTOMER']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file QVI_purchase_behaviour.csv is 72637
+Number of fields in file QVI_purchase_behaviour.csv is 3
+
+Number of values in LYLTY_CARD_NBR column is 72637
+Number of unique values in LYLTY_CARD_NBR column is 72637
+Number of null values in LYLTY_CARD_NBR column is 0
+
+Number of values in LIFESTAGE column is 72637
+Number of unique values in LIFESTAGE column is 7
+Number of null values in LIFESTAGE column is 0
+
+Number of values in PREMIUM_CUSTOMER column is 72637
+Number of unique values in PREMIUM_CUSTOMER column is 3
+Number of null values in PREMIUM_CUSTOMER column is 0
+
+File: QVI_transaction_data.csv
+Headers: ['DATE', 'STORE_NBR', 'LYLTY_CARD_NBR', 'TXN_ID', 'PROD_NBR', 'PROD_NAME', 'PROD_QTY', 'TOT_SALES']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file QVI_transaction_data.csv is 264836
+Number of fields in file QVI_transaction_data.csv is 8
+
+Number of values in DATE column is 264836
+Number of unique values in DATE column is 364
+Number of null values in DATE column is 0
+
+Number of values in STORE_NBR column is 264836
+Number of unique values in STORE_NBR column is 272
+Number of null values in STORE_NBR column is 0
+
+Number of values in LYLTY_CARD_NBR column is 264836
+Number of unique values in LYLTY_CARD_NBR column is 72637
+Number of null values in LYLTY_CARD_NBR column is 0
+
+Number of values in TXN_ID column is 264836
+Number of unique values in TXN_ID column is 263127
+Number of null values in TXN_ID column is 0
+
+Number of values in PROD_NBR column is 264836
+Number of unique values in PROD_NBR column is 114
+Number of null values in PROD_NBR column is 0
+
+Number of values in PROD_NAME column is 264836
+Number of unique values in PROD_NAME column is 114
+Number of null values in PROD_NAME column is 0
+
+Number of values in PROD_QTY column is 264836
+Number of unique values in PROD_QTY column is 6
+Number of null values in PROD_QTY column is 0
+
+Number of values in TOT_SALES column is 264836
+Number of unique values in TOT_SALES column is 112
+Number of null values in TOT_SALES column is 0
+
+File: Reactions (1).csv
+Headers: ['', 'Content ID', 'User ID', 'Type', 'Datetime']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file Reactions (1).csv is 25553
+Number of fields in file Reactions (1).csv is 4
+
+Number of values in Content ID column is 25553
+Number of unique values in Content ID column is 980
+Number of null values in Content ID column is 0
+
+Number of values in User ID column is 22534
+Number of unique values in User ID column is 501
+Number of null values in User ID column is 3019
+
+Number of values in Type column is 24573
+Number of unique values in Type column is 17
+Number of null values in Type column is 980
+
+Number of values in Datetime column is 25553
+Number of unique values in Datetime column is 25542
+Number of null values in Datetime column is 0
+
+File: ReactionTypes (1).csv
+Headers: ['', 'Type', 'Sentiment', 'Score']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file ReactionTypes (1).csv is 16
+Number of fields in file ReactionTypes (1).csv is 3
+
+Number of values in Type column is 16
+Number of unique values in Type column is 16
+Number of null values in Type column is 0
+
+Number of values in Sentiment column is 16
+Number of unique values in Sentiment column is 3
+Number of null values in Sentiment column is 0
+
+Number of values in Score column is 16
+Number of unique values in Score column is 15
+Number of null values in Score column is 0
+
+File: Session (1).csv
+Headers: ['', 'User ID', 'Device', 'Duration']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file Session (1).csv is 500
+Number of fields in file Session (1).csv is 3
+
+Number of values in User ID column is 500
+Number of unique values in User ID column is 500
+Number of null values in User ID column is 0
+
+Number of values in Device column is 500
+Number of unique values in Device column is 13
+Number of null values in Device column is 0
+
+Number of values in Duration column is 500
+Number of unique values in Duration column is 99
+Number of null values in Duration column is 0
+
+File: User (1).csv
+Headers: ['', 'User ID', 'Name', 'Email']
+Delimiter: ,
+Row Separator: \n
+
+Number of records in file User (1).csv is 500
+Number of fields in file User (1).csv is 3
+
+Number of values in User ID column is 500
+Number of unique values in User ID column is 500
+Number of null values in User ID column is 0
+
+Number of values in Name column is 500
+Number of unique values in Name column is 500
+Number of null values in Name column is 0
+
+Number of values in Email column is 500
+Number of unique values in Email column is 255
+Number of null values in Email column is 0
+

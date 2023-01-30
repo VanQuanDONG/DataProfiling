@@ -1,0 +1,3 @@
+ID	homeaddress	uni
+1	ashleya	Mac
+2	cowper	UNSW
