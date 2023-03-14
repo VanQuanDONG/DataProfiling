@@ -1,0 +1,145 @@
+GO
+ALTER PROCEDURE Data_Profiling_v2
+AS
+BEGIN 
+
+    SET NOCOUNT ON;
+
+    DECLARE @Filter VARCHAR(100);
+    DECLARE @catalog VARCHAR(100);
+    DECLARE @schema VARCHAR(100);
+    DECLARE @table_name VARCHAR(100);
+    DECLARE @column_name VARCHAR(100);
+    DECLARE @Profiling_Date DATETIME2;
+    DECLARE @TYPE VARCHAR(100);
+    DECLARE @METADATA VARCHAR(100);
+    DECLARE @sql NVARCHAR(MAX);
+
+    DECLARE cursor_name CURSOR FOR  
+    SELECT REF.TABLE_CATALOG,REF.TABLE_SCHEMA,REF.TABLE_NAME, REF.COLUMN_NAME, REF.FILTER_Profiling, SYST.DATA_TYPE, CONCAT(SYST.DATA_TYPE, '-', SYST.CHARACTER_MAXIMUM_LENGTH) as METADATA      
+    FROM Behaviour.dbo.Reftab REF LEFT JOIN INFORMATION_SCHEMA.COLUMNS SYST ON REF.TABLE_CATALOG = SYST.TABLE_CATALOG AND REF.TABLE_SCHEMA = SYST.TABLE_SCHEMA AND REF.TABLE_NAME = SYST.TABLE_NAME
+    AND REF.COLUMN_NAME = SYST.COLUMN_NAME
+    WHERE Profiling_Flag = 'Y';
+
+    OPEN cursor_name;
+
+    FETCH NEXT FROM cursor_name INTO @catalog , @schema, @table_name, @column_name, @filter, @TYPE, @METADATA;
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        IF (@filter <> '')
+        BEGIN
+            SET @sql = N'INSERT INTO Profiling_Result (TABLE_CATALOG,TABLE_SCHEMA,Table_Name, Column_Name, Count_All, Count_Null, PCT_Null, TOTAL_COUNT_MINUS_ONE,Percent_of_minus_1,MIN_VALUE,MAX_VALUE, Profiling_Date) 
+                        SELECT ''' + @catalog + ''' as TABLE_CATALOG,
+                                '''  + @schema +''' as TABLE_SCHEMA,
+                                ''' + @table_name +''' as Table_Name,
+                               ''' + @column_name + ''' as Column_Name,
+                                COUNT(*) as Count_All,
+                                count(case when '+@column_name+' is null then cast(1 as int) end) as Count_Null,
+                                CAST(SUM(CASE WHEN '+@column_name+' IS NULL THEN 1 ELSE 0 END) AS FLOAT) / COUNT(*) * 10 as PCT_Null,
+                                (SELECT COUNT(*) FROM ' + @table_name + ' WHERE CAST(' + @column_name + ' AS VARCHAR)  = ''-1'') as TOTAL_COUNT_MINUS_ONE,
+                                 ROUND((CAST((SELECT COUNT(*) FROM ' + @table_name + ' WHERE CAST(' + @column_name + ' AS VARCHAR) = ''-1'') as FLOAT)/CAST(COUNT(*) as FLOAT)) * 100,2)  as  Percent_Minus_One,
+                                MIN('+@column_name+') as min_value,
+                                MAX('+@column_name+')  as max_value,
+                                GETDATE() as Profiling_Date
+                        FROM ' + @table_name + '
+                        WHERE ' + @filter + ';';
+            EXEC (@sql); 
+        END
+        ELSE
+        BEGIN
+            SET @sql = N'INSERT INTO Profiling_Result (TABLE_CATALOG,TABLE_SCHEMA,Table_Name, Column_Name, Count_All, Count_Null, PCT_Null, TOTAL_COUNT_MINUS_ONE,Percent_of_minus_1,MIN_VALUE,MAX_VALUE, Profiling_Date) 
+                        SELECT  ''' + @catalog + ''' as TABLE_CATALOG,
+                                '''  + @schema +''' as TABLE_SCHEMA,
+                                ''' + @table_name +''' as Table_Name,
+                                ''' + @column_name + ''' as Column_Name,
+                                COUNT(*) as Count_All,
+                                count(case when '+@column_name+' is null then cast(1 as int) end) as Count_Null,
+                                CAST(SUM(CASE WHEN '+@column_name+' IS NULL THEN 1 ELSE 0 END) AS FLOAT) / COUNT(*) * 10 as PCT_Null,
+                                (SELECT COUNT(*) FROM ' + @table_name + ' WHERE CAST(' + @column_name + ' AS VARCHAR)  = ''-1'') as TOTAL_COUNT_MINUS_ONE,
+                                 ROUND((CAST((SELECT COUNT(*) FROM ' + @table_name + ' WHERE CAST(' + @column_name + ' AS VARCHAR) = ''-1'') as FLOAT)/CAST(COUNT(*) as FLOAT)) * 100,2)  as  Percent_Minus_One,
+                                MIN('+@column_name+') as min_value,
+                                MAX('+@column_name+')  as max_value,
+                                GETDATE() as Profiling_Date
+                        FROM ' + @table_name + ';';
+            EXEC (@sql); 
+        END;
+
+        FETCH NEXT FROM cursor_name INTO @catalog, @schema, @table_name, @column_name, @filter,@TYPE, @METADATA;
+    END;
+
+    CLOSE cursor_name;
+    DEALLOCATE cursor_name;
+
+END;
+
+
+EXEC Data_Profiling_v2
+
+
+SELECT * FROM Profiling_Result
+
+
+SELECT * FROM Reftab
+
+ALTER
+
+UPDATE RefTab
+SET Profiling_Flag = 'N'
+WHERE TABLE_NAME LIKE 'P%'
+
+SELECT * FROM  RefTab
+WHERE Profiling_Flag = 'y'
+
+UPDATE RefTab
+SET Profiling_Flag = 'Y'
+WHERE TABLE_NAME IN ('CONTENT','PROFILE','REACTION','ReactionTypes','SESSION','USERINFO','Epinions')
+
+
+TRUNCATE TABLE Behaviour.dbo.Profiling_Result
+
+
+
+-----------------------------------------TRUNCATE TABLE Behaviour.dbo.Profiling_Result -- DO NOT RUN
+
+
+--SUM NOT COUNT
+
+SELECT count(*) as total_count, max(url) AS MAX_VAL ,min(url) AS MIN_VAL ,count(case when url = '-1' then cast(1 as int) end) as count_of_minus_1, count(case when url is null then cast(1 as int) end) as count_of_null,
+ROUND((CAST(SUM(CASE WHEN TRY_CONVERT(FLOAT, url) = -1 THEN 1 END) AS FLOAT) / CAST(COUNT(*) AS FLOAT)) * 100, 2) as Percent_Minus_One,
+ROUND(CAST(SUM(CASE WHEN url IS NULL THEN 1 ELSE 0 END) AS FLOAT) / COUNT(*) * 100, 2) AS Percent_OF_NULL
+FROM Behaviour.dbo.CONTENT
+WHERE 1=1;
+
+
+
+SELECT 
+count(*) as total_count, 
+max(url) AS MAX_VAL ,
+min(url) AS MIN_VAL ,
+count(case when url = '-1' then cast(1 as int) end) as count_of_minus_1, 
+count(case when url is null then cast(1 as int) end) as count_of_null,
+CAST(SUM(CASE WHEN URL  = '-1' THEN 1 ELSE 0 END) as FLOAT) / COUNT(*) * 100 as Percent_Minus_One,
+CAST(SUM(CASE WHEN url IS NULL THEN 1 ELSE 0 END) AS FLOAT) / COUNT(*) * 100 AS Percent_OF_NULL
+FROM Behaviour.dbo.CONTENT
+WHERE 1=1;
+
+--SELECT ROUND(SUM(CASE WHEN ISNULL(TRY_CONVERT(VARCHAR, URL)) = 0 AND URL = '-1' THEN 1 ELSE 0 END) / COUNT(*) * 100, 2) AS Percent_Minus_One
+
+
+ select * from   Behaviour.dbo.CONTENT
+ WHERE URL = '-1'
+
+ UPDATE CONTENT
+ SET URl = -1
+ WHERE TYPE LIKE 'GIF'
+
+                        SELECT  COUNT(*) as Count_All, 
+                                (SELECT COUNT(*) FROM CONTENT WHERE URL IS NULL) as Count_Null,
+                                ROUND((CAST((SELECT COUNT(*) FROM CONTENT WHERE URL IS NULL) as FLOAT)/CAST(COUNT(*) as FLOAT)) * 100,2)  as PCT_Null,
+                                (SELECT COUNT(*) FROM CONTENT WHERE CAST(URL AS VARCHAR)  = '-1') as TOTAL_COUNT_MINUS_ONE,
+                                ROUND((CAST((SELECT COUNT(*) FROM CONTENT WHERE CAST(URL AS VARCHAR) = '-1') as FLOAT)/CAST(COUNT(*) as FLOAT)) * 100,2)  as Percent_of_minus_1,
+                                MIN(URL) as min_value,
+                                MAX(URL)  as max_value,
+                               GETDATE() as Profiling_Date
+                        FROM CONTENT
